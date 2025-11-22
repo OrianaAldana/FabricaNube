@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabricaNube", "FabricaNube.csproj", "{86C769B1-6DB2-4A30-840D-5264E2CBBB22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86C769B1-6DB2-4A30-840D-5264E2CBBB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C769B1-6DB2-4A30-840D-5264E2CBBB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C769B1-6DB2-4A30-840D-5264E2CBBB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C769B1-6DB2-4A30-840D-5264E2CBBB22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55263E3B-651E-4ABA-9809-12A1C59EB40A}
+	EndGlobalSection
+EndGlobal
