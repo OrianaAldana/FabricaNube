@@ -1,4 +1,5 @@
 using FabricaNube.Data;
+using FabricaNube.Services;
 using Microsoft.EntityFrameworkCore;
 
 var url = Environment.GetEnvironmentVariable("DATABASE_URL");
@@ -26,6 +27,15 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<ISucursalService, SucursalService>();
+
+
+builder.Services.AddHttpClient("SucursalService", client =>
+{
+    client.BaseAddress = new Uri("https:sucursalsantacruz-production.up.railway.app/swagger");
+});
+
 
 var app = builder.Build();
 
