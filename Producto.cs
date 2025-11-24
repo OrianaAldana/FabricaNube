@@ -8,7 +8,7 @@ namespace FabricaNube
         public int IdProducto { get; set; }
 
         [Required, MaxLength(30)]
-        public string Codigo { get; set; } = string.Empty;
+        public string Codigo { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 8);
 
         [Required, MaxLength(100)]
         public string Nombre { get; set; } = string.Empty;
@@ -28,6 +28,5 @@ namespace FabricaNube
         [MaxLength(20)]
         public string Estado { get; set; } = "ACTIVO";
     }
-
 
 }

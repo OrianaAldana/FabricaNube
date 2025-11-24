@@ -8,7 +8,7 @@ namespace FabricaNube
         public int IdPresupuesto { get; set; }
 
         [Required, MaxLength(30)]
-        public string Codigo { get; set; } = string.Empty;
+        public string Codigo { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 8);
 
         public decimal MontoSolicitado { get; set; }
 
@@ -18,5 +18,6 @@ namespace FabricaNube
 
         public string Estado { get; set; } = "PENDIENTE";
     }
+
 
 }

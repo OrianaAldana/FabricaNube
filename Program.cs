@@ -1,22 +1,44 @@
+using FabricaNube.Data;
+using Microsoft.EntityFrameworkCore;
+
+var url = Environment.GetEnvironmentVariable("DATABASE_URL");
+Console.WriteLine($"La cadena de conexion es esta: {url}");
+
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<FabricaDbContext>(options =>
+    options.UseNpgsql(url)
+);
+//add services
+builder.WebHost.UseUrls("http://0.0.0.0:8080");
+// Registrar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsLibre", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var db = scope.ServiceProvider.GetRequiredService<FabricaDbContext>();
+    db.Database.Migrate();
 }
 
-app.UseHttpsRedirection();
+    app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseCors("CorsLibre");
 
 app.UseAuthorization();
 
